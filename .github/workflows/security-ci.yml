@@ -14,7 +14,7 @@ jobs:
           pip install -r requirements.txt
           pip install safety bandit
       - name: Run Tests
-        run: pytest test_sample_code.py
+        run: python3 -m unittest discover -v
       - name: Security Check 1 - Dependency Scan
         run: |
           echo " Checking for vulnerable dependencies..."
@@ -23,5 +23,5 @@ jobs:
       - name: Security Check 2 - Code Security Scan
         run: |
           echo " Scanning code for security issues..."
-          bandit -r src/ -ll
+          bandit -r ./ -ll
         continue-on-error: true
